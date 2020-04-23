@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+
+		return "Ciao Laravel";
+       
+       //return redirect(route('home')); //effetto un redirect alla root del progetto
+});
+
