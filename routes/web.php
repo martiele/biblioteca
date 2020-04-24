@@ -13,14 +13,46 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
 
-Route::get('/home', function () {
-
-		return "Ciao Laravel";
-       
-       //return redirect(route('home')); //effetto un redirect alla root del progetto
+/*
+//Esempi di rotte "anonime"
+Route::get('/', function () {
+    return "Home page del mio sito Laravel";
 });
+
+Route::get('/posts', function () {
+		return "Elenco degli articoli della mia libreria";
+});
+
+
+//Esempio di rotta con "nome"
+Route::get('/libri', [ 'as' => 'libriElenco', function () { 
+		//nomino la rotta 'libriElenco'
+       return "Elenco di libri";
+}]);
+
+//redirect verso /libri
+Route::get('/elencolibri', function () {
+		//richiamo la rotta usando il nome
+       return redirect( route('libriElenco') ); 
+       //effetto un redirect alla pagina libri Elenco
+});
+*/
+
+Route::get('/', 
+	[ 	'as' => 'home', 
+		'uses' => 'FrontendController@getHome'
+	]);
+
+Route::get('/libro/{id?}', 
+	[ 	'as' => 'bookDetail', 
+		'uses' => 'FrontendController@getBookDetail'
+	]);
+
+
 
